@@ -1,0 +1,31 @@
+<table id="{{section.courseID}}" cellpadding="3" cellspacing="0" border="0" class="tableSubDataPerson display sortable">
+    <thead>
+        <tr style="border-bottom: 1px solid #DCDCDC !important;">
+            <th width="80%" class="sub_name" data-sortcolumn="0" data-sortkey="0-0" ng-click="changeArrown(section.courseID);">
+                Name <img id="icon_arrowg{{section.courseID}}" src="img/arrowdowng.png">
+            </th>
+            <th width="10%" class="sub_grade" data-sortcolumn="1" data-sortkey="1-0">
+                Grade
+            </th>
+            <th width="10%"></th>
+        </tr>
+    </thead>
+    <tfoot class="oculto">
+        <tr>
+            <th style="padding-left: 15%;">
+                Name
+            </th>
+            <th>
+                Grade
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr style="border-bottom: 2px solid #DCDCDC !important;" ng-repeat="student in section.students | filter:filterNames | filter:filterRange">
+            <td class="dropdownsetting sub_data_name" data-value="{{student.firstname}}">{{student.firstname + ' ' + student.lastname}}</td>
+            <td class="dropdownsetting sub_data_grade" data-value="{{getFormatedPercent(student.percent)}}"><span class="grade_num">{{getFormatedPercent(student.percent)}}</span></td>
+            <td><a href="/detail/{{student.userID}}"><i class="fa fa-angle-right icon_angle_r"></i></a></td>
+        </tr>
+    </tobody>
+</table>

@@ -1,0 +1,74 @@
+<div id="gradesFilterModal">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="$close()">&times;</button>
+        <h1 class="modal-title title_assig_filter" id="myModalLabel">Grades Filter</h1>
+        <h5 class="sub_title_assig_filter">What are you looking for?</h5>
+	</div>
+
+    <div class="modal-body">
+		<form class="form-horizontal">  
+            
+                <!-- Text input-->
+                <div class="form-group" ng-if="scopeParent.type == 'grades'">
+                    <label class="col-md-4 control-label" for="name">Name:</label>  
+                    <div class="col-md-8">
+                        <input id="name" name="name" type="text" placeholder="E.g. John Smith" class="form-control input-md">
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group" ng-if="scopeParent.type == 'details'">
+                    <label class="col-md-4 control-label" for="name">Name:</label>  
+                    <div class="col-md-8">
+                        <input id="name" name="name" type="text" placeholder="E.g. Test1" class="form-control input-md">
+
+                    </div>
+                </div>
+            
+                <!-- Text input-->
+                <div class="form-group" ng-show="scopeParent.type == 'details'">
+                    <label class="col-md-4 control-label" for="date_range">Date:</label>  
+                    <div class="col-md-8"  id="sandbox-container">    
+                        <div class="input-daterange input-group" id="datepicker">
+                            <input type="text" class="input-sm form-control" id="date" name="date" placeholder="E.g. 10/15/15" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Select Basic -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="scoring:">Section:</label>
+                    <div class="col-md-8">
+                        <select id="section" name="scoring:" class="form-control">
+                            <option value="">Select section</option>
+                            <option ng-repeat="section in scopeParent.data" value="{{section.name}}">{{section.name}}</option>
+                        </select>
+                    </div>
+                </div>                
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="grade">Grade:</label>  
+                    <div class="col-md-8">
+                        <input id="grade" name="grade" type="text" placeholder="E.g. 100" class="form-control input-md">
+
+                    </div>
+                </div>
+            
+                <!-- Button (Double) -->
+                <div class="form-group">
+                    <div class="col-md-12 text-center">
+                        <button id="button1id" name="button1id" class="btn btn-default btn_view_all" ng-click="scopeParent.viewAll(this)">VIEW ALL</button>
+                        <button id="button2id" name="button2id" class="btn btn-success btn_search" ng-click="scopeParent.search(this)">SEACH</button>
+                    </div>
+                </div>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#sandbox-container .input-daterange').datepicker();
+    });
+</script>

@@ -1,0 +1,17 @@
+<div id="masterModal">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="$close()">&times;</button>
+    <h4 class="modal-title" id="myModalLabel" ng-if="config.title">{{config.title}}</h4>
+	</div>
+
+    <div class="modal-body">
+		<form>
+			<p ng-if="!config.html">{{config.body}}</p>
+      <div ng-if="config.html" ng-bind-html="config.body"></div>
+			<div class="center">
+        <button ng-repeat="btn in config.buttons" ng-if="!btn.return" class="btn"  ng-click="btn.callback()" ng-class="btn.class">{{btn.name}}</button>
+        <button ng-repeat="btn in config.buttons" ng-if="btn.return" class="btn"  ng-click="$close(btn.return.value)" ng-class="btn.class">{{btn.name}}</button>
+      </div>
+		</form>
+	</div>
+</div>

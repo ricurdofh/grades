@@ -1,0 +1,92 @@
+[
+	{
+		"courseID" : 1,
+		"name" :"Section1",
+		"students" : [ 
+			{
+				"userID" : 1,
+				"firstname" : "John",
+				"lastname" : "Doe",
+				"percent" : 80,
+				"attendance" : 10,
+				"questions" : 10
+			},
+			{
+				"userID" : 2,
+				"firstname" : "Mary",
+				"lastname" : "Jane",
+				"percent" : 75,
+				"attendance" : 10,
+				"questions" : 10
+			},
+			{
+				"userID" : 3,
+				"firstname" : "Jim",
+				"lastname" : "Brown",
+				"percent" : 83,
+				"attendance" : 9,
+				"questions" : 10
+			}
+		]
+	},
+	{
+		"courseID" : 2,
+		"name" :"Section2",
+		"students" : [ 
+			{
+				"userID" : 1,
+				"firstname" : "John",
+				"lastname" : "Doe",
+				"percent" : 50,
+				"attendance" : 5,
+				"questions" : 10
+			},
+			{
+				"userID" : 2,
+				"firstname" : "Mary",
+				"lastname" : "Jane",
+				"percent" : 69,
+				"attendance" : 8,
+				"questions" : 10
+			},
+			{
+				"userID" : 3,
+				"firstname" : "Jim",
+				"lastname" : "Brown",
+				"percent" : 89,
+				"attendance" : 10,
+				"questions" : 10
+			}
+		]
+	},
+	{
+		"courseID" : 3,
+		"name" :"Section3",
+		"students" : [ 
+			{
+				"userID" : 1,
+				"firstname" : "John",
+				"lastname" : "Doe",
+				"percent" : 70,
+				"attendance" : 6,
+				"questions" : 10
+			},
+			{
+				"userID" : 2,
+				"firstname" : "Mary",
+				"lastname" : "Jane",
+				"percent" : 90,
+				"attendance" : 10,
+				"questions" : 10
+			},
+			{
+				"userID" : 3,
+				"firstname" : "Jim",
+				"lastname" : "Brown",
+				"percent" : 90,
+				"attendance" : 8,
+				"questions" : 10
+			}
+		]
+	}
+]

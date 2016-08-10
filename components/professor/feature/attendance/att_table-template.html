@@ -1,0 +1,33 @@
+<table id="{{code.idtable}}" cellpadding="3" cellspacing="0" border="0" class="tableSubDataPerson display sortable">
+    <thead>
+        <tr style="border-bottom: 1px solid #DCDCDC !important;">
+            <th width="5%"></th>
+            <th width="30%" class="att_code_i">
+                Name
+            </th>
+            <th width="30%" class="sub_date" ng-click="changeArrown('{{data.idtable}}');">
+                Date <img id="icon_arrowg{{data.idtable}}" src="img/arrowdowng.png">
+            </th>
+            <th width="15%" class="text-center">Points</th>
+            <th width="15%" class="text-center" data-sortcolumn="0" data-sortkey="0-0">
+                Attendance
+            </th>
+            <th width="15%" class="text-center"></th>
+        </tr>
+    </thead>
+    <tbody ng-repeat="attendance in section.attendance | filter:filterRange(section) | filter:searchDate" data-ng-switch on="rowCollapsed[attendance.attendanceID][$index]">
+        <tr style="border-bottom: 2px solid #DCDCDC !important;">
+            <td class="dropdownsetting text-center" data-value="{{getPercent(attendance.attended, section.students)}}" ng-click="deleteAttendance(attendance.attendanceID);"><i class="fa fa-times"></i></td>
+            <td class="dropdownsetting sub_data_name_i" data-value="{{getPercent(attendance.attended, section.students)}}">Attendance</td>
+            <td class="dropdownsetting sub_data_date"><span class="date_result">{{getDate(attendance.timestamp, attendance)}}</span><br><span class="time_result">{{getHour(attendance.timestamp)}}</span></td>
+            <td class="dropdownsetting sub_data_grade"><input type="text" class="text_quiz input_{{attendance.attendanceID}}" value="{{attendance.points}}" ng-model="attendance.points" ng-change="changeIcon(section, attendance, $index)"><i class="fa fa-refresh" ng-click="updatePoints(section, attendance, $index)" ng-if="attendance['attendance_'+attendance.attendanceID].update"></td>
+            <td class="dropdownsetting sub_data_grade"><span class="grade_num">{{getPercent(attendance.attended, section.students, attendance)}}%</span></td>
+            <td class="text-center"><a ng-click="selectTableRow($index, attendance.attendanceID, $event)"><i class="fa fa-angle-down icon_angle_up"></a></td>
+        </tr>
+        <tr data-ng-switch-when="true">
+            <td colspan="6" data-value="{{getPercent(attendance.attended, section.students)}}">
+                <div ng-include="'components/professor/feature/attendance/att_int_template.html'" id="{{attendance.attendanceID}}_quiz" class="dataTables_wrapper"></div>
+            </td>
+        </tr>
+    </tobody>
+</table>

@@ -1,0 +1,43 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div id="gradesPageProfessor" class = "pageScale">
+  <div class="container">
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="panel hoverPanel"  ng-click="openMaster()">
+        <div class = "updateCount">14</div>
+        <div class="featureIcon">
+          <i class = "zmdi zmdi-email"></i>
+        </div>
+        <div id="classInbox">
+          <p class = "featureTitle">Inbox</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" >
+      <div class="panel hoverPanel">
+        <div class="featureIcon">
+          <i class = "zmdi zmdi-settings"></i>
+        </div>
+        <div id="classSettings">
+          <p class = "featureTitle">Settings</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" >
+      <div class="panel hoverPanel">
+        <div class="featureIcon">
+          <i class = "zmdi zmdi-widgets"></i>
+        </div>
+        <div id="downloadWidget">
+          <p class = "featureTitle">Download Widget</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/ng-template" id="masterModal">
+  <div ng-include="'components/modals/masterModal.html'"></div>
+</script>

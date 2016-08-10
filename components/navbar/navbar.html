@@ -1,0 +1,56 @@
+<nav class="navbar navbar-default navbar-fixed-top depth-lvl-1"  ng-controller="NavbarCtrl" >
+	<script type="text/ng-template" id = "support">
+		<div  ng-include="'components/navbar/ckSupport.html'"></div>
+	</script>
+	<script type="text/ng-template" id = "supportAlert">
+		<div  ng-include="'components/navbar/ckSupportAlert.html'"></div>
+	</script>
+	<div class="container-fluid">
+
+		<!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+
+		  <button title="Expand Menu" type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+				<i class="zmdi zmdi-more-vert"></i>
+		  </button>
+		  <button title="Support" type="button" class="navbar-toggle bugToggle" ng-click="openSupport()" >
+				<i class="zmdi zmdi-help-outline"></i>
+      </button>
+			<a class="navbar-brand" href="" ng-click="goToHome()">
+			<!-- <i class="zmdi zmdi-home"></i> -->
+			<p>CourseKey <b>Beta</b></p></a>
+	    </div>
+		<ul class="nav navbar-nav" >
+			<li id = "navBack" ng-show="showBack">
+				<a href="#" ng-click="backOnePage()">
+					<i  class="zmdi zmdi-chevron-left"></i><p>Back</p>
+				</a>
+			</li>
+		</ul>
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" collapse="isCollapsed" id = "navCollapse" >
+	      <ul class="nav navbar-nav navbar-right">
+			  <!--<li class="dropdown" dropdown>-->
+				  <!--<a class="dropdown-toggle" dropdown-toggle><i class="zmdi zmdi-apps"></i></a>-->
+				  <!--<ul class="dropdown-menu" role="menu">-->
+					  <!--<li ng-repeat="course in courseList" ng-click="changeCourse(course)">{{course.name}}</li>-->
+				  <!--</ul>-->
+			  <!--</li>-->
+				<li >
+					<a id = "bugBtn" href="" ng-click="openSupport()" >
+						Support
+					</a>
+				</li>
+					<li class="dropdown" dropdown>
+					  <a href="#" class="dropdown-toggle" dropdown-toggle>firstname lastname<i class="zmdi  zmdi-caret-down"></i></a>
+					  <ul class="dropdown-menu " role="menu">
+					    <li><a href="" ng-click="goToSettings()"><i class="zmdi zmdi-account"></i>Profile</a></li>
+					    <li><a href="" ng-click="logout()"><i class="zmdi zmdi-mail-reply"></i>Logout</a></li>
+					  </ul>
+					</li>
+
+	      </ul>
+    </div><!-- /.navbar-collapse -->
+
+  </div>
+</nav>

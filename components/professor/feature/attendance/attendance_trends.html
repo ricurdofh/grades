@@ -1,0 +1,100 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div id="attendancePageProfessor" class = "pageScale" cg-busy="attendancePromise">
+    <div class="container">
+        
+        <!-- Icons Download and Search -->
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="icons_d_s">
+                    <li><button class="btn btn-default dropd_style" type="button" aria-haspopup="true" ng-click="enableParentOnly()">
+                        {{parentButton}}
+                    </button></li>
+                    <li><img src="img/icon_download.png"></li>
+                    <li><img src="img/icon_search.png" ng-click="openAttendanceFilterModal(this)"></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Detail Studen Bars Progress -->
+        <div class="row">
+            <div class="col-xs-12 col-md-2"></div>
+            <div class="col-xs-12 col-md-8 text-center">
+                <h1 id="namePerson" class="text-center grades_title">Attendance Trends</h1>
+                
+                <div style="margin-top: 8%;" id="chart">
+                    <div google-chart chart="chartObject" style="{{cssStyle}}"></div>
+                </div>
+                <div style="width: 128px; margin: 0px auto;">
+                    <div align="center" class="dropdown" style="margin: auto auto;">
+                        <button class="btn btn-default dropdown-toggle dropd_style" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            {{selectedAverage}}
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li ><a href="#" ng-click="averageWeek()">Average Week</a></li>
+                            <li ><a href="#" ng-click="averageMonth()">Average Month</a></li>
+                            <li ><a href="#" ng-click="averageYear()">Average Year</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-2"></div>
+        </div>   
+
+        <!-- Datatables -->
+        <div class="row">
+            <div class="col-xs-12 col-md-1"></div>
+            <div class="col-xs-12 col-md-10">
+                <br><br>
+                <table id="dtAttendance" class="display dtAttendance" cellspacing="0" width="100%" style="padding-left: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th width="5%"></th>
+                            <th width="30%" class="att_code_i">Code </th>
+                            <th width="30%" class="att_date text-center"></th>
+                            <th width="15%" class="att_points text-center"></th>
+                            <th width="15%" class="att_att text-center">Attendance</th>
+                            <th width="15%"></th>
+                        </tr>
+                    </thead>
+                    <tbody  ng-repeat="section in filtered = (data | filter:{name:searchSection})" data-ng-switch on="rowCollapsed[section.courseID][$index]">
+                        <tr role="row" class="odd">
+                            <td class="dropdownsetting"></td>
+                            <td class="dropdownsetting sub_data_name_i sorting_1">{{section.name}}</td>
+                            <td class="dropdownsetting"></td>
+                            <td class="dropdownsetting"></td>
+                            <td class="dropdownsetting data_sub_grade">{{section.total}}%</td>
+                            <td class="details-control dropdownsetting text-center" ng-click="selectTableRow($index, section.courseID, $event)"><img id="icon_arrow{{section.courseID}}" class="arrowdown" src="img/arrowup.png"></td>
+                        </tr>
+                        <tr data-ng-switch-when="true">
+                            <td colspan="6">
+                                <div ng-include="'components/professor/feature/attendance/att_table-template.html'" id="{{section.courseID}}_wrapper" class="dataTables_wrapper"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-12 col-md-1"></div>
+        </div>
+
+    </div>
+</div>
+<script type="text/ng-template" id="attendanceFilterModal">
+  <div ng-include="'components/modals/attendanceFilterModal.html'"></div>
+</script>
+
+<script type="text/ng-template" id="attendanceModali">
+  <div ng-include="'components/modals/attendanceModali.html'"></div>
+</script>
+
+<script type="text/ng-template" id="infoQuizModal">
+  <div ng-include="'components/modals/infoQuizModal.html'"></div>
+</script>
+
+<script type="text/ng-template" id="infoQuizDetailModal">
+  <div ng-include="'components/modals/infoQuizDetailModal.html'"></div>
+</script>
+
+<script type="text/ng-template" id="modalNotifications">
+  <div ng-include="'components/modals/modalNotifications.html'"></div>
+</script>

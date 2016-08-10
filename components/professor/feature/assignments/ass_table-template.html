@@ -1,0 +1,33 @@
+<table id="{{section.courseID}}" cellpadding="3" cellspacing="0" border="0" class="tableSubDataPerson display sortable">
+    <thead>
+        <tr style="border-bottom: 1px solid #DCDCDC !important;">
+            <th width="5%"></th>
+            <th width="30%" class="att_code_i">
+                Name
+            </th>
+            <th width="30%" class="sub_date" ng-click="changeArrown('{{data.idtable}}');">
+                Date <img id="icon_arrowg{{data.idtable}}" src="img/arrowdowng.png">
+            </th>
+            <th width="15%" class="text-center">Points</th>
+            <th width="15%" class="text-center" data-sortcolumn="0" data-sortkey="0-0">
+                Average
+            </th>
+            <th class="text-center" width="15%"></th>
+        </tr>
+    </thead>
+    <tbody ng-repeat="assignment in section.assignments | filter:dateRange" data-ng-switch on="rowCollapsed[assignment.assignmentID][$index]">
+        <tr style="border-bottom: 2px solid #DCDCDC !important;">
+            <td class="dropdownsetting sub_data_name_i" data-value="{{getFormatedPercent(assignment.percent)}}" ng-click="deleteAssignment(section.courseID, assignment);"><i class="fa fa-times"></td>
+            <td class="dropdownsetting sub_data_name_i" data-value="{{getFormatedPercent(assignment.percent)}}">{{assignment.name}}</td>
+            <td class="dropdownsetting sub_data_date"><span class="date_result">{{getDate(assignment.timestamp)}}</span><br><span class="time_result">{{getHour(assignment.timestamp)}}</span></td>
+            <td class="dropdownsetting sub_data_grade"><span class="grade_num" style="color: {{totalColor}}">{{assignment.points}}</span></td>
+            <td class="dropdownsetting sub_data_grade"><span class="grade_num">{{getFormatedPercent(assignment.percent)}}%</span></td>
+            <td class="text-center"><a ng-click="showTableAssignment(section.courseID, assignment.assignmentID)"><i class="fa fa-angle-down icon_angle_up"></a></td>
+        </tr>
+        <tr ng-show="assignments['assignment_'+assignment.assignmentID].show"  id="tr_{{assignment.assignmentID}}">
+            <td colspan="6" data-value="{{getFormatedPercent(assignment.percent)}}">
+                <div ng-include="'components/professor/feature/assignments/assquiz_template.html'" id="{{assignment.assignmentID}}_quiz" class="dataTables_wrapper"></div>
+            </td>
+        </tr>
+    </tobody>
+</table>

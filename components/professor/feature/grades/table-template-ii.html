@@ -1,0 +1,53 @@
+<table id="{{section.courseID}}" cellpadding="3" cellspacing="0" border="0" class="tableSubDataPerson display sortable" ng-repeat="quize in detail.courses" ng-if="quize.courseID == section.courseID">
+    <thead>
+        <tr style="border-bottom: 1px solid #DCDCDC !important;">
+            <th width="40%" class="sub_name" ng-click="changeArrown('{{data.idtable}}');">
+                Name <img id="icon_arrowg{{data.idtable}}" src="img/arrowdowng.png">
+            </th>
+            <th width="40%" class="sub_date">
+                Date
+            </th>
+            <th width="10%" class="sub_grade" data-sortcolumn="0" data-sortkey="0-0">
+                Grade
+            </th>
+            <th width="10%"></th>
+        </tr>
+    </thead>
+    <tfoot class="oculto">
+        <tr>
+            <th style="padding-left: 15%;">
+                Name
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Grade
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+    <tbody ng-repeat="assignment in filtered = (quize.assignments | filter:{name:searchName}) | filter:filterRange | filter:searchDate" data-ng-switch on="rowCollapsed[assignment.assignmentID][$index]" ng-show="show_ass">
+        <tr style="border-bottom: 2px solid #DCDCDC !important;">
+            <td class="dropdownsetting sub_data_name" data-value="{{assignment.points}}">{{assignment.name}}</td>
+            <td class="dropdownsetting sub_data_date"><span class="date_result">{{getDate(assignment.timestamp, assignment)}}</span><br><span class="time_result">{{getHour(assignment.timestamp)}}</span></td>
+            <td class="dropdownsetting sub_data_grade"><span class="grade_num" style="color: {{totalColor}}">{{assignment.points + ' / ' + assignment.total}}</span></td>
+            <td class="text-center"><a ng-click="showTableAssignment(quize.courseID, assignment.assignmentID)"><i class="fa fa-angle-down icon_angle_up"></a></td>
+        </tr>
+        <tr ng-show="assignments['assignment_'+assignment.assignmentID].show" id="tr_{{assignment.assignmentID}}">
+            <td colspan="4" data-value="{{assignment.points}}">
+                <div ng-include="'components/professor/feature/grades/quiz-template.html'" id="{{assignment.assignmentID}}_quiz" class="dataTables_wrapper">
+                </div>
+            </td>
+        </tr>
+    </tbody>
+    <tbody ng-repeat="attendance in quize.attendance | filter:filterRange | filter:searchDate" ng-show="show_att">
+        <tr style="border-bottom: 2px solid #DCDCDC !important;">
+            <td class="dropdownsetting sub_data_name" data-value="{{attendance.points}}" ng-if="attendance.present">Present</td>
+            <td class="dropdownsetting sub_data_name" data-value="{{attendance.points}}" ng-if="!attendance.present">Not Present</td>
+            <td class="dropdownsetting sub_data_date"><span class="date_result">{{getDate(attendance.timestamp, attendance)}}</span><br><span class="time_result">{{getHour(attendance.timestamp)}}</span></td>
+            <td class="dropdownsetting sub_data_grade"><span class="grade_num">{{attendance.points}}</span></td>
+            <td class="text-center" ng-click="openAttendanceModali(this, section, attendance)"><img src="img/icon_exclama.png"></td>
+        </tr>
+    </tbody>
+</table>

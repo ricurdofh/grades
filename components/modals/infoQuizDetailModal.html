@@ -1,0 +1,111 @@
+<div id="infoQuizDetailModalii" style="background-color: white;">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="$close()">&times;</button>
+    <h1 class="modal-title modal-title-fr title_info_quiz text-center" id="myModalLabel" ng-if="general || type == 'fr'">{{assignment.name}}</h1>
+    <h1 class="modal-title title_info_quiz text-center" id="myModalLabel" ng-if="!general && type != 'fr'">{{userView.firstname}}</h1>
+    <div ng-if="type == 'fr'" align="center"><br><button class="btn_gray_wa" type="button" ng-click="$close(); scopeParent.openAssignmentsImageA()"><i class="fa fa-paperclip"></i> View Attachment</button><br><br></div>
+    <h5 class="sub_title_info_quiz text-center">
+      Question {{questionNumber}}: <br>
+      {{question.question}} <br>
+      <div style="margin-top: 10px;">
+        <span class="label label-warning" ng-if="caller == 'grades' || type != 'fr'">MC</span>
+        <span class="label label-warning" ng-if="type == 'fr'">FR</span>
+      </div>
+    </h5>    
+    <div ng-if="general">
+      <ul class="tags_options_modal">
+        <li class="tag_1_modal {{activeCount}}" ng-click="changeAnswerView('count')">AnswerCount</li>
+        <li class="tag_3_modal {{activeList}}" ng-click="changeAnswerView('list')">AnswerList</li>
+      </ul>
+    </div>
+	</div>
+
+  <div class="modal-body" ng-if="answerCount">
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="menu">
+          <div class="panel modify_p list-group">
+            <a href="#" class="list-group-item panel_p_c no-radius-b" data-toggle="collapse" data-target="#sm0" data-parent="#menu"><span>Correct</span> <span class="number_arrow">{{question.correctCount}}<img id="arrowModal0" src="img/arrowupgr.png" alt="arrow" class="p_t_a arrowdown"></span></a>
+            <div id="sm0" class="sublinks collapse">
+              <span class="list-group-item small no-radius-b panel_items" ng-repeat="user in question.responses" ng-if="(user.hasOwnProperty('response')) && (question.correct == user.response)">{{user.firstname + ' ' + user.lastname}} <a href="/detail/{{user.userID}}" ng-click="$close()"><i class="fa fa-angle-right angle_right_m"></i><span class="option-response" ng-if="caller == 'assignment' && type != 'fr'">{{question.choices[user.response]}}</span></a> 
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizDetailModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, false, user.userID, 'grades')" ng-if="caller == 'grades'">View Answer</button>
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, user.userID, question.responses, $index - 1, $index + 1)" ng-if="type == 'fr' && $index != 0 && $index != question.responses.length - 1">View Answer</button>
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, user.userID, question.responses, undefined, $index + 1)" ng-if="type == 'fr' && $index == 0 && $index != question.responses.length - 1">View Answer</button>
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, user.userID, question.responses, $index - 1)" ng-if="type == 'fr' && $index != 0 && $index == question.responses.length - 1">View Answer</button>
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, user.userID)" ng-if="type == 'fr' && $index == 0 && $index == question.responses.length - 1">View Answer</button>
+              </span>        
+            </div>
+            <a href="#" class="list-group-item panel_p no-radius-b active_p_m" data-toggle="collapse" data-target="#sm1" data-parent="#menu"><span>Incorrect</span> <span class="number_arrow">{{question.incorrectCount}}<img id="arrowModal1" src="img/arrowupgr.png" alt="arrow" class="p_t_a arrowdown"></span></a>
+            <div id="sm1" class="sublinks collapse">
+              <span class="list-group-item small no-radius-b panel_items" ng-repeat="user in question.responses" ng-if="(user.hasOwnProperty('response')) && (question.correct != user.response)">{{user.firstname + ' ' + user.lastname}} <a href="/detail/{{user.userID}}" ng-click="$close()"><i class="fa fa-angle-right angle_right_m"></i><span class="option-response" ng-if="caller == 'assignment' && type != 'fr'">{{question.choices[user.response]}}</span></a> 
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizDetailModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, false, user.userID, 'grades')" ng-if="caller == 'grades'">View Answer</button>
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, user.userID, question.responses, $index - 1, $index + 1)" ng-if="type == 'fr' && $index != 0 && $index != question.responses.length - 1">View Answer</button>
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, user.userID, question.responses, undefined, $index + 1)" ng-if="type == 'fr' && $index == 0 && $index != question.responses.length - 1">View Answer</button>
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, user.userID, question.responses, $index - 1)" ng-if="type == 'fr' && $index != 0 && $index == question.responses.length - 1">View Answer</button>
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, user.userID)" ng-if="type == 'fr' && $index == 0 && $index == question.responses.length">View Answer</button>
+              </span>
+      
+            </div>
+            <a href="#" class="list-group-item panel_p_na no-radius-b" data-toggle="collapse" data-target="#sm2" data-parent="#menu"><span>No Answer</span> <span class="number_arrow">{{question.notAnswered}}<img id="arrowModal0" src="img/arrowupgr.png" alt="arrow" class="p_t_a arrowdown"></span></a>
+            <div id="sm2" class="sublinks collapse">
+              <span class="list-group-item small no-radius-b panel_items" ng-repeat="user in question.responses" ng-if="!(user.hasOwnProperty('response'))">{{user.firstname + ' ' + user.lastname}}<a href="/detail/{{user.userID}}" ng-click="$close()"><i class="fa fa-angle-right angle_right_m"></i></a> 
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizDetailModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, false, user.userID, 'grades')" ng-if="caller == 'grades'">View Answer</button>
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, user.userID, question.responses, $index - 1, $index + 1)" ng-if="type == 'fr' && $index != 0 && $index != question.responses.length - 1">View Answer</button>
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, user.userID, question.responses, undefined, $index + 1)" ng-if="type == 'fr' && $index == 0 && $index != question.responses.length - 1">View Answer</button>
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, user.userID, question.responses, $index - 1)" ng-if="type == 'fr' && $index != 0 && $index == question.responses.length - 1">View Answer</button>
+                <button class="btn_gray" type="button" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, user.userID)" ng-if="type == 'fr' && $index == 0 && $index == question.responses.length">View Answer</button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div align="center" style="padding: 0px 38px 38px;">
+            <button id="button2id" name="button2id" class="btn btn-success btn_infoquiz_done" style="margin-top: 25px;" ng-click="$close()">Done</button>
+        </div>
+      </div>
+    </div>
+	</div>
+  <div class="modal-body" ng-if="!answerCount">
+    <div class="row">
+      <div class="col-xs-12" style="padding: 14px;">      
+        <table class="settingtable_infoquizii" style="background-color: #EDEDED;">
+          <tbody>
+            <tr ng-repeat-start="choice in question.choices">
+              <td colspan="2">                                
+                <p class="text_info_quizii" style="background-color: #EDEDED; padding: 38px;" ng-style="setColor(general, $index)">                    
+                </p>
+              </td>
+            </tr>
+            <tr class="border_bton" ng-repeat-end="">
+              <td width="90%" class="text_info_quizii" style="padding-left: 38px;">
+                <br>
+                <span ng-style="setColor(general, $index)">Students who answered <b>{{choice}}</b><br></span>
+                <div class="progress bar_p_y_modif_gray_ii m_topxv">
+                  <div class="progress-bar progress-bar-warning bar_p_y_modif_red" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{countAnswers[$index] * 100 / question.responses.length}}%;">
+                    <span class="por_bar">{{countAnswers[$index]}}</span>
+                  </div>
+                  <span class="por_bar">{{question.responses.length - countAnswers[$index]}}</span>
+                </div>
+              </td>
+              <td width="10%" class="text-center" ng-if="$index == question.correct">
+                <i class="fa fa-check check_modify_quizii"></i>
+              </td>
+              <td width="10%" class="text-center" ng-if="$index != question.correct">
+                <img src="img/icon_quiz_close.png" class="close_icon">
+              </td>
+            </tr>           
+          </tbody>
+        </table>
+        <div align="center" style="padding: 0 38px;" ng-if="general">
+          <button id="button2id" name="button2id" class="btn btn-success btn_infoquiz_done" style="margin-top: 25px;" ng-click="changeAnswerView('count')">Back</button>
+        </div>
+        <div align="center" style="padding: 0 38px;" ng-if="!general && caller == 'grades'">
+          <button id="button2id" name="button2id" class="btn btn-success btn_infoquiz_done" style="margin-top: 25px;" ng-click="$close(); scopeParent.openInfoQuizDetailModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, true, undefined,'grades')">Back</button>
+          <div align="center" style="padding: 0 38px;" ng-if="!general && caller != 'grades'">
+            <button id="button2id" name="button2id" class="btn btn-success btn_infoquiz_done" style="margin-top: 25px;" ng-click="$close();">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

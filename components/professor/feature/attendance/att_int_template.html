@@ -1,0 +1,21 @@
+<table id="attendance{{attendance.attendanceID}}" cellpadding="3" cellspacing="0" border="0" class="tableSubDataPerson display">
+    <tbody>
+        <tr>
+            <td width="5%"></td>
+            <td width="20%" class="p_l_xvi">
+                <span style="color: green">Attended</span>  
+            </td>
+            <td width="55%" colspan="2" class="text-center">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - -</td>
+            <td width="15%" class="text-center">{{attendance.attended}} / {{section.students}}</td>
+            <td width="10%" rowspan="2" class="text-center" ng-click="openAttendanceModali(this, section, attendance)"><img src="img/icon_exclama.png"></td>
+        </tr>
+        <tr>
+            <td width="5%"></td>
+            <td class="p_l_xvi"> 
+                <span style="color: red">Absent</span> 
+            </td>
+            <td colspan="2" class="text-center">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - -</td>
+            <td class="text-center">{{section.students - attendance.attended}} / {{section.students}}</td>
+        </tr>
+    </tobody>
+</table>

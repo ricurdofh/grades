@@ -1,0 +1,57 @@
+<div id="infoQuizModal" style="background-color: white;">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="$close()">&times;</button>
+      <h1 class="modal-title title_info_quiz text-center" id="myModalLabel">{{assignment.name}}</h1>
+      <h5 class="sub_title_info_quiz text-center">
+        Question {{questionNumber}}: <br>
+        {{question.question}}
+      </h5>
+	</div>
+
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-xs-12" style="padding: 38px;">
+        <p class="text_info_quiz">
+            {{user.firstname}}'s Answer: <br>
+            {{user.response}}
+        </p>		
+        <table class="settingtable_infoquiz">
+          <tbody>
+            <tr>
+              <td class="text_info_quiz">{{user.firstname}}'s points for this question <i class="fa fa-refresh icon_refresh_m" ng-click="updateGrade(userQuestion)" ng-if="update && (prevID >= 0 || nextID >= 0)"></i><input type="text" min="0" class="text_quiz_ii input_{{quiz.questionID}}" value="{{userQuestion.points}}" ng-change="scopeParent.changeIcon(assignment.assignmentID, quiz, questionNumber - 1)" ng-model="quiz.points" ng-if="!prevID && !nextID"><input type="text" min="0" class="text_quiz_ii inputm_{{quiz.questionID}}" value="{{userQuestion.points}}" ng-change="changeIcon(userQuestion)" ng-model="userQuestion.points" ng-if="prevID >= 0 || nextID >= 0"></td>
+            </tr>
+            <tr>
+              <td class="text_info_quiz" style="padding-top: 15px !important;">
+                <span>Students' answers:</span>
+              </td>
+            </tr>
+            <tr>
+              <td width="70%">
+                <div class="progress bar_p_y_modif_gray m_topxv">
+                  <div class="progress-bar progress-bar-warning bar_p_y_modif_red" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{question.correctPercent + question.incorrectPercent}}%;">
+                    <div class="progress-bar progress-bar-warning bar_p_y_modif_green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{question.correctPercent * 100 / (question.correctPercent + question. incorrectPercent)}}%;">
+                      <span class="por_bar">{{question.correctCount}}</span>
+                    </div>
+                    <span class="por_bar">{{question.incorrectCount}}</span>
+                  </div>
+                  <span class="por_bar">{{question.notAnswered}}</span>
+                </div>
+              </td>
+            </tr>                        
+          </tbody>
+        </table>
+        <div align="center">
+          <br>
+          <button id="everyone" name="everyone" class="btn btn-default btn_infoquiz_every" style="margin-top: 25px;" ng-click="$close(); scopeParent.openInfoQuizDetailModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, false, undefined, 'assignment', 'fr')">Everyone's Answer</button>
+          <br>
+          <button id="button2id" name="button2id" class="btn btn-success btn_infoquiz_done" ng-class="prevClass" style="margin-top: 25px;" ng-if="prevID > 0" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, users[prevID].userID, users, prevID - 1, prevID + 1)">Prev Student</button>
+          <button id="button2id" name="button2id" class="btn btn-success btn_infoquiz_done" ng-class="prevClass" style="margin-top: 25px;" ng-if="prevID == 0" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, users[prevID].userID, users, undefined, prevID + 1)">Prev Student</button>
+          <button id="button2id" name="button2id" class="btn btn-success btn_infoquiz_done" ng-class="nextClass" style="margin-top: 25px;" ng-if="nextID && nextID + 1 != users.length" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, users[nextID].userID, users, nextID - 1, nextID + 1)">Next Student</button>
+          <button id="button2id" name="button2id" class="btn btn-success btn_infoquiz_done" ng-class="nextClass" style="margin-top: 25px;" ng-if="nextID && nextID + 1 == users.length" ng-click="$close(); scopeParent.openInfoQuizModal(courseID, quiz, questionNumber - 1, assignment, scopeParent, users[nextID].userID, users, nextID - 1)">Next Student</button>
+          <button id="button2id" name="button2id" class="btn btn-success btn_infoquiz_done" style="margin-top: 25px;" ng-if="!scopeParent.assignments['assignment_'+assignment.assignmentID]['question_'+quiz.questionID].update && !prevID && !nextID" ng-click="$close();">Done</button>
+          <button id="button2id" name="button2id" class="btn btn-success btn_infoquiz_done" style="margin-top: 25px;" ng-if="scopeParent.assignments['assignment_'+assignment.assignmentID]['question_'+quiz.questionID].update && !prevID && !nextID" ng-click="scopeParent.updateGrade(courseID, quiz, assignment.assignmentID, questionNumber - 1); $close()">Done</button>
+        </div>
+      </div>
+    </div>
+	</div>
+</div>

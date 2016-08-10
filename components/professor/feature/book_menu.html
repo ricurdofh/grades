@@ -1,0 +1,49 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div id="gradesPageProfessor" class = "pageScale">
+  <div class="container">
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <a ng-href="/grades">
+        <div class="panel hoverPanel">
+          <div class="featureIcon">
+            <i class="zmdi zmdi-star-half"></i>
+          </div>
+          <div id="classInbox">
+            <p class = "featureTitle">Grades</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" >      
+      <a ng-href="/assignments">
+        <div class="panel hoverPanel">
+          <div class="featureIcon">
+            <i class="fa fa-file-text-o icon_assignments"></i>
+          </div>
+          <div id="classSettings">
+            <p class = "featureTitle">Assignments</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" >
+      <a ng-href="/attendance">
+        <div class="panel hoverPanel">
+          <div class="featureIcon">
+            <img src="img/group_l_p.png" alt="group line point">
+          </div>
+          <div id="downloadWidget">
+            <p class = "featureTitle">Attendance Trends</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+<script type="text/ng-template" id="masterModal">
+  <div ng-include="'components/modals/masterModal.html'"></div>
+</script>

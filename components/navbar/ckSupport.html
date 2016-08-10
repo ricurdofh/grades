@@ -1,0 +1,75 @@
+<div ng-controller="NavbarCtrl" id="ckSupportModal" >
+
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="close()">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">CourseKey Support</h4>
+  </div>
+  <div class="modal-body">
+
+    <form name="form" ng-submit="supportSubmit()" >
+
+      <div id = "helpBtns" class="form-group">
+        <div class = "row">
+          <div class = " col-xs-12 col-sm-4" ng-click="toUserGuide()">
+            <div class = "supportPan">
+              User Guides
+            </div>
+          </div>
+          <div class = "col-xs-12 col-sm-4" ng-click="toHelpVideo()">
+            <div class = "supportPan">
+              Videos
+            </div>
+          </div>
+          <div class = "col-xs-12 col-sm-4" ng-click="toFAQ()">
+            <div class = "supportPan">
+              FAQ
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class = "row" ng-show="modalData">
+        <div class = "col-sm-12" ng-click="openLiveChat()">
+          <div class = "liveChatBtn">
+            <p>Live Chat with Support</p>
+          </div>
+        </div>
+      </div>
+      <div class = "row" ng-show="!modalData">
+        <div class = "col-sm-12">
+          <div class = "liveChatBtnOff">
+            <p>Live Chat Currently Offline</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- <a ng-show="modalData" href="javascript:void($zopim.livechat.window.show())">Chat with CourseKey Support!</a> -->
+      <!-- <p ng-show="!modalData">Chat Disabled</p> -->
+      <div class="form-group ">
+        <label>Select Issue</label>
+        <div class="btn-group " dropdown>
+          <button type="button" class="btn tableOptionBtn dropdown-toggle" dropdown-toggle>{{issueSelected}}<i class="zmdi  zmdi-caret-down"></i></button>
+          <ul class="dropdown-menu" role="menu">
+            <li ng-click="setType(supportType)" ng-repeat = "supportType in supportOptions"><a href="" >{{supportType}}</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input id="subject" type="text" class="form-control" ng-required="true" ng-model="subject"/>
+      </div>
+
+      <div class="form-group">
+        <label for="desc">Description</label>
+        <textarea id="desc" class="form-control" rows= "4" placeholder="" ng-required="true" ng-model="description"></textarea>
+      </div>
+      <p class = "help-block">{{status}}</p>
+      <div class="center">
+        <button id="supportSend" type="submit" name="submit" class="btn successBtn">Send</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

@@ -1,0 +1,44 @@
+<div id="infoQuizDetailModalii" style="background-color: white;">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="$close(); updateParentData()">&times;</button>
+        <h1 class="modal-title title_info_quiz text-center" id="myModalLabel">{{scopeAttendance.attendanceID}}</h1>
+        <h5 class="sub_title_info_quiz text-center">
+            {{scopeParent.getDate(scopeAttendance.timestamp)}} <br>
+            {{scopeParent.getHour(scopeAttendance.timestamp)}} <br>
+        </h5>   
+	</div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-12">
+            <div id="menu">
+                <div class="panel modify_p list-group">
+                    <a href="#" class="list-group-item panel_p_c no-radius-b" data-toggle="collapse" data-target="#sm0" data-parent="#menu"><span>Attended</span> <span class="number_arrow">{{scopeAttendance.attended}}<img id="arrowModal0" src="img/arrowupgr.png" alt="arrow" class="p_t_a arrowdown"></span></a>
+                    <div id="sm0" class="sublinks collapse">
+                        <span class="list-group-item small no-radius-b panel_items" ng-repeat="student in attendance" ng-if="student.attended">
+                            {{student.firstname + ' ' + student.lastname}} <a ng-href="/detail/{{student.userID}}" ng-click="$close()"><i class="fa fa-angle-right angle_right_m"></i></a>
+                            <ul class="att_tags_options_modal">
+                                <li class="tag_1_modal_i active_tag_modal">Attended</li>
+                                <li class="tag_3_modal_i" ng-click="changeAttended(student, false)">Absent</li>
+                            </ul>
+                        </span>                       
+                    </div>
+                    <a href="#" class="list-group-item panel_p no-radius-b active_p_m" data-toggle="collapse" data-target="#sm1" data-parent="#menu"><span>Absent</span> <span class="number_arrow">{{section.students - scopeAttendance.attended}}<img id="arrowModal1" src="img/arrowupgr.png" alt="arrow" class="p_t_a arrowdown"></span></a>
+                    <div id="sm1" class="sublinks collapse">
+                        <span class="list-group-item small no-radius-b panel_items" ng-repeat="student in attendance" ng-if="!student.attended">
+                            {{student.firstname + ' ' + student.lastname}} <a ng-href="/detail/{{student.userID}}" ng-click="$close()"><i class="fa fa-angle-right angle_right_m"></i></a>                             
+                            <ul class="att_tags_options_modal">
+                                <li class="tag_1_modal_i" ng-click="changeAttended(student, true)">Attended</li>
+                                <li class="tag_3_modal_i active_tag_modal">Absent</li>
+                            </ul>
+                        </span>                       
+                    </div>
+                </div>
+            </div>
+                <div align="center" style="padding: 0px 38px 38px;">
+                    <button id="button2id" name="button2id" class="btn btn-success btn_infoquiz_done" style="margin-top: 25px;" ng-click="$close(); updateParentData()">Done</button>
+                </div>
+             </div>
+         </div>
+	</div>
+</div>
