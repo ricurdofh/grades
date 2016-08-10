@@ -87,7 +87,7 @@ angular.module('coursekeyApp')
       scopeChild.$close();
     };
 
-    $scope.gradesPromise = $http.get('/data/grades.json');
+    $scope.gradesPromise = $http.get('grades/data/grades.json');
 
     $scope.gradesPromise.success($scope.loadGrades);
 

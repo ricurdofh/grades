@@ -1,4 +1,4 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-include="'grades/components/navbar/navbar.html'"></div>
 <div id="gradesPageProfessor" class = "pageScale" cg-busy="gradesPromise">
   <div class="container">
       
@@ -6,8 +6,8 @@
     <div class="row">
       <div class="col-xs-12">
         <ul class="icons_d_s">
-          <li><img src="img/icon_download.png"></li>
-          <li><img src="img/icon_search.png" ng-click="openGradesFilterModal(this)"></li>
+          <li><img src="grades/img/icon_download.png"></li>
+          <li><img src="grades/img/icon_search.png" ng-click="openGradesFilterModal(this)"></li>
         </ul>
       </div>
     </div>
@@ -68,11 +68,11 @@
             <tr role="row" class="odd">
               <td class="dropdownsetting data_section_name  sorting_1">{{section.name}}</td>
               <td class=" dropdownsetting data_sub_grade">{{section.total}}%</td>
-              <td class=" details-control dropdownsetting " ng-click="selectTableRow($index, section.courseID, $event)"><img id="icon_arrow{{section.courseID}}" class="arrowdown" src="img/arrowup.png"></td>
+              <td class=" details-control dropdownsetting " ng-click="selectTableRow($index, section.courseID, $event)"><img id="icon_arrow{{section.courseID}}" class="arrowdown" src="grades/img/arrowup.png"></td>
             </tr>
             <tr data-ng-switch-when="true">
               <td colspan="3">
-                  <div ng-include="'components/professor/feature/grades/table-template.html'" id="{{section.courseID}}_wrapper" class="dataTables_wrapper"></div>
+                  <div ng-include="'grades/components/professor/feature/grades/table-template.html'" id="{{section.courseID}}_wrapper" class="dataTables_wrapper"></div>
               </td>
             </tr>
           </tbody>
@@ -82,6 +82,6 @@
     </div>
   </div>
 </div>
-<script type="text/ng-template" id="gradesFilterModal">
-  <div ng-include="'components/modals/gradesFilterModal.html'"></div>
+<script type="grades/text/ng-template" id="gradesFilterModal">
+  <div ng-include="'grades/components/modals/gradesFilterModal.html'"></div>
 </script>
