@@ -37,29 +37,29 @@ angular
   ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
-      .when('/', {
+      .when('/grades', {
         templateUrl: 'grades/components/professor/feature/book_menu.html',
         //templateUrl: 'components/professor/feature/grades/grades_detail.html',
         controller: 'GradesProfessorCtrl'
       })
-      .when('/grades', {
+      .when('/grades/grades', {
         templateUrl: 'grades/components/professor/feature/grades/grades_desktop.html',
         controller: 'GradesDesktopCtrl'
       })
-      .when('/detail/:userID', {
+      .when('/grades/detail/:userID', {
         templateUrl: 'grades/components/professor/feature/grades/grades_detail.html',
         controller: 'GradesDetailsCtrl'
       })
-      .when('/attendance', {
+      .when('/grades/attendance', {
         templateUrl: 'grades/components/professor/feature/attendance/attendance_trends.html',
         controller: 'AttendanceProfessorCtrl'
       })
-      .when('/assignments', {
+      .when('/grades/assignments', {
         templateUrl: 'grades/components/professor/feature/assignments/assignments.html',
         controller: 'AssignmentsProfessorCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/grades'
       });
     $locationProvider.html5Mode(true);
   }).config(['ngClipProvider', function(ngClipProvider) {
