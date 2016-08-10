@@ -38,24 +38,24 @@ angular
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'components/professor/feature/book_menu.html',
+        templateUrl: 'grades/components/professor/feature/book_menu.html',
         //templateUrl: 'components/professor/feature/grades/grades_detail.html',
         controller: 'GradesProfessorCtrl'
       })
       .when('/grades', {
-        templateUrl: 'components/professor/feature/grades/grades_desktop.html',
+        templateUrl: 'grades/components/professor/feature/grades/grades_desktop.html',
         controller: 'GradesDesktopCtrl'
       })
       .when('/detail/:userID', {
-        templateUrl: 'components/professor/feature/grades/grades_detail.html',
+        templateUrl: 'grades/components/professor/feature/grades/grades_detail.html',
         controller: 'GradesDetailsCtrl'
       })
       .when('/attendance', {
-        templateUrl: 'components/professor/feature/attendance/attendance_trends.html',
+        templateUrl: 'grades/components/professor/feature/attendance/attendance_trends.html',
         controller: 'AttendanceProfessorCtrl'
       })
       .when('/assignments', {
-        templateUrl: 'components/professor/feature/assignments/assignments.html',
+        templateUrl: 'grades/components/professor/feature/assignments/assignments.html',
         controller: 'AssignmentsProfessorCtrl'
       })
       .otherwise({
@@ -63,7 +63,7 @@ angular
       });
     $locationProvider.html5Mode(true);
   }).config(['ngClipProvider', function(ngClipProvider) {
-    ngClipProvider.setPath('bower_components/zeroclipboard/dist/ZeroClipboard.swf');
+    ngClipProvider.setPath('grades/bower_components/zeroclipboard/dist/ZeroClipboard.swf');
   }])
   .config(['localStorageServiceProvider', function(localStorageServiceProvider) {
     localStorageServiceProvider.setPrefix('CK');
