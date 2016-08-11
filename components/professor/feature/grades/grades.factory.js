@@ -32,7 +32,7 @@ angular.module('coursekeyApp')
                 };
 
             $modal.open({
-                templateUrl: 'gradesFilterModal',
+                templateUrl: 'grades/components/modals/gradesFilterModal.html',
                 controller: 'gradesFilterModal',
                 backdrop: 'static',
                 resolve: {
