@@ -1,0 +1,44 @@
+{
+	"userID" : 1,
+	"firstname" : "John",
+	"lastname" : "Doe",
+	"imgLink" : "https://avatars2.githubusercontent.com/u/5685218?v=3&s=460",
+	"courses" : [
+		{
+			"courseID" : 1,
+			"assignments" : [
+				{
+					"assignmentID" : 1,
+					"name" : "Test 1",
+					"points" : 8,
+					"timestamp" : 1470957104115,
+					"total" : 10
+
+				},
+				{
+					"assignmentID" : 2,
+					"name" : "Test 2",
+					"points" : 4,
+					"timestamp" : 1470957204115,
+					"total" : 5
+
+				},
+				{
+					"assignmentID" : 3,
+					"name" : "Test 3",
+					"points" : 10,
+					"timestamp" : 1470957304115,
+					"total" : 10
+
+				}
+			],
+			"attendance" : [
+				{
+					"points" : 10,
+					"present" : true,
+					"timestamp" : 1470957104115
+				}
+			]
+		}
+	]
+}
