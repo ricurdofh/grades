@@ -38,14 +38,14 @@ angular.module('coursekeyApp')
       });
     };
 
-    $scope.gradesPromise = $http.get('http://ckstaging.elasticbeanstalk.com/api/v1/professor/gradebook/15');
+    $scope.gradesPromise = $http.get('grades/data/grades.json');
 
     $scope.gradesPromise.success($scope.loadGrades);
 
-    $scope.detailsPromise = $http.get('http://ckstaging.elasticbeanstalk.com/api/v1/professor/gradebook/15/'+$scope.userID);
+    $scope.detailsPromise = $http.get('grades/data/grades-user'+$scope.userID+'.json');
 
     $scope.detailsPromise.success(function (data) {
-      $scope.imgLink = 'https://www.gravatar.com/avatar/'+SparkMD5.hash(data.email.trim())+'?s=128&d=404';
+      //$scope.imgLink = 'https://www.gravatar.com/avatar/'+SparkMD5.hash(data.email.trim())+'?s=128&d=404';
       $scope.detail = data;
 
       $scope.Datalength = $scope.data.length;
@@ -79,7 +79,7 @@ angular.module('coursekeyApp')
 
     $scope.showTableAssignment = function (courseID, id) {
       if (typeof $scope.assignments['assignment_'+id] === 'undefined') {
-        $scope.assignmentPromise = $http.get('http://ckstaging.elasticbeanstalk.com/api/v1/professor/gradebook/'+courseID+'/'+$scope.userID+'/'+id);
+        $scope.assignmentPromise = $http.get('grades/data/grades-ass'+courseID+''+$scope.userID+''+id+'.json');
         $scope.assignmentPromise.success(function (data) {
           $scope.assignments['assignment_'+id] = data;
           $scope.assignmentsNotChange['assignment_'+id] = JSON.parse(JSON.stringify(data));

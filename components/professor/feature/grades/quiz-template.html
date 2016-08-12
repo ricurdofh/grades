@@ -4,14 +4,14 @@
             <td width="20%" class="text-right">Q{{$index + 1}}</td>
             <td width="10%" class="text-center" ng-if="quiz.type == 0"><span class="label label-warning label-warning-modify">MC</span></td>
             <td width="10%" class="text-center" ng-if="quiz.type == 1"><span class="label label-warning label-warning-modify">FR</span></td>
-            <td width="5%" class="text-center"  ng-if="quiz.points != quiz.total"><img src="img/icon_quiz_close.png"></td>
+            <td width="5%" class="text-center"  ng-if="quiz.points != quiz.total"><img src="grades/img/icon_quiz_close.png"></td>
             <td width="5%" class="text-center"  ng-if="quiz.points == quiz.total"><i class="fa fa-check check_modify_quiz"></i></td>
             <td width="5%" class="text-center"  ng-if="quiz.col2 == 2"><span class="slash_icon">/</span></td>
             <td width="40%" class="text-center">{{quiz.question}}</td>
             <td width="10%" class="text-right"><input type="text" min="0" max="{{quiz.total}}" class="text_quiz input_{{quiz.questionID}}" value="{{quiz.points}}" ng-change="changeIcon(assignment.assignmentID, quiz, $index)" ng-model="quiz.points"></td>
             <td width="5%" class="text-left">{{quiz.total}}</td>
-            <td width="10%" class="text-center"ng-click="openInfoQuizDetailModal(section.courseID, quiz, $index, assignment, this, true, undefined, 'grades')" ng-if="!assignments['assignment_'+assignment.assignmentID]['question_'+quiz.questionID].update && quiz.type == 0"><img src="img/icon_exclama.png"></td>
-            <td width="10%" class="text-center" ng-click="openInfoQuizModal(section.courseID, quiz, $index, assignment, this)" ng-if="!assignments['assignment_'+assignment.assignmentID]['question_'+quiz.questionID].update && quiz.type == 1"><img src="img/icon_exclama.png"></td>
+            <td width="10%" class="text-center"ng-click="openInfoQuizDetailModal(section.courseID, quiz, $index, assignment, this, true, undefined, 'grades')" ng-if="!assignments['assignment_'+assignment.assignmentID]['question_'+quiz.questionID].update && quiz.type == 0"><img src="grades/img/icon_exclama.png"></td>
+            <td width="10%" class="text-center" ng-click="openInfoQuizModal(section.courseID, quiz, $index, assignment, this)" ng-if="!assignments['assignment_'+assignment.assignmentID]['question_'+quiz.questionID].update && quiz.type == 1"><img src="grades/img/icon_exclama.png"></td>
             <td width="10%" class="text-center" ng-click="updateGrade(section.courseID, quiz, assignment.assignmentID, $index)" ng-if="assignments['assignment_'+assignment.assignmentID]['question_'+quiz.questionID].update"><i class="fa fa-refresh"></td>
         </tr>
     </tobody>

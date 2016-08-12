@@ -1,4 +1,4 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-include="'grades/components/navbar/navbar.html'"></div>
 <div id="gradesPageProfessor" class = "pageScale">
   <div class="container">
       
@@ -6,8 +6,8 @@
     <div class="row">
       <div class="col-xs-12">
         <ul class="icons_d_s">
-          <li><img src="img/icon_download.png"></li>
-          <li><img src="img/icon_search.png" ng-click="openGradesFilterModal(this)"></li>
+          <li><img src="grades/img/icon_download.png"></li>
+          <li><img src="grades/img/icon_search.png" ng-click="openGradesFilterModal(this)"></li>
         </ul>
       </div>
     </div>
@@ -16,7 +16,7 @@
     <div class="row">
       <div class="col-xs-12 col-md-2"></div>
       <div class="col-xs-12 col-md-8 text-center">
-        <img alt="Profile Picture" id = "userImg" src = "{{imgLink}}" onError="this.onerror=null;this.src='../../../assets/images/ck_basic.png';" width="128" height="129"/>
+        <img alt="Profile Picture" id = "userImg" src = "{{detail.imgLink}}" onError="this.onerror=null;this.src='../../../assets/images/ck_basic.png';" width="128" height="129"/>
 
         <!-- <img src="img/photo.png" width="128" height="129" alt="Photo"> -->
         <br><br>
@@ -86,11 +86,11 @@
               <td class="dropdownsetting data_section_name  sorting_1">{{section.name}}</td>
               <td class="dropdownsetting"></td>
               <td class="dropdownsetting data_sub_grade">{{getFormatedPercent(thisStudent[$index].percent)}}%</td>
-              <td class="details-control dropdownsetting text-center" ng-click="selectTableRow($index, section.courseID, $event)"><img id="icon_arrow{{section.courseID}}" class="arrowdown" src="img/arrowup.png"></td>
+              <td class="details-control dropdownsetting text-center" ng-click="selectTableRow($index, section.courseID, $event)"><img id="icon_arrow{{section.courseID}}" class="arrowdown" src="grades/img/arrowup.png"></td>
             </tr>
             <tr data-ng-switch-when="true">
               <td colspan="4">
-                <div ng-include="'components/professor/feature/grades/table-template-ii.html'" id="{{section.courseID}}_wrapper" class="dataTables_wrapper"></div>
+                <div ng-include="'grades/components/professor/feature/grades/table-template-ii.html'" id="{{section.courseID}}_wrapper" class="dataTables_wrapper"></div>
               </td>
             </tr>
           </tbody>
@@ -102,26 +102,26 @@
   </div>
 </div>
 <script type="text/ng-template" id="gradesFilterModal">
-  <div ng-include="'components/modals/gradesFilterModal.html'"></div>
+  <div ng-include="'grades/components/modals/gradesFilterModal.html'"></div>
 </script>
 
 <script type="text/ng-template" id="infoQuizModal">
-  <div ng-include="'components/modals/infoQuizModal.html'"></div>
+  <div ng-include="'grades/components/modals/infoQuizModal.html'"></div>
 </script>
 
 <script type="text/ng-template" id="infoQuizDetailModal">
-  <div ng-include="'components/modals/infoQuizDetailModal.html'"></div>
+  <div ng-include="'grades/components/modals/infoQuizDetailModal.html'"></div>
 </script>
 
 <script type="text/ng-template" id="attendanceModali">
-  <div ng-include="'components/modals/attendanceModali.html'"></div>
+  <div ng-include="'grades/components/modals/attendanceModali.html'"></div>
 </script>
 
 <script type="text/ng-template" id="assignmentsImageA">
-  <div ng-include="'components/modals/assignmentsImageA.html'"></div>
+  <div ng-include="'grades/components/modals/assignmentsImageA.html'"></div>
 </script>
 
 <script type="text/ng-template" id="modalNotifications">
-  <div ng-include="'components/modals/modalNotifications.html'"></div>
+  <div ng-include="'grades/components/modals/modalNotifications.html'"></div>
 </script>
 
