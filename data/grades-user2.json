@@ -2,7 +2,7 @@
 	"userID" : 1,
 	"firstname" : "Mary",
 	"lastname" : "Jane",
-	"imgLink" : "/img/photo.png",
+	"imgLink" : "grades/img/photo.png",
 	"courses" : [
 		{
 			"courseID" : 1,
