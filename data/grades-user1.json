@@ -39,6 +39,88 @@
 					"timestamp" : 1470957104115
 				}
 			]
+		},
+		{
+			"courseID" : 2,
+			"assignments" : [
+				{
+					"assignmentID" : 1,
+					"name" : "Test 1",
+					"points" : 7,
+					"timestamp" : 1470957104115,
+					"total" : 10
+
+				},
+				{
+					"assignmentID" : 2,
+					"name" : "Test 2",
+					"points" : 8,
+					"timestamp" : 1470957204115,
+					"total" : 5
+
+				},
+				{
+					"assignmentID" : 3,
+					"name" : "Test 3",
+					"points" : 5,
+					"timestamp" : 1470957304115,
+					"total" : 10
+
+				}
+			],
+			"attendance" : [
+				{
+					"points" : 10,
+					"present" : true,
+					"timestamp" : 1470957104115
+				},
+				{
+					"points" : 10,
+					"present" : true,
+					"timestamp" : 1470957104115
+				},
+				{
+					"points" : 0,
+					"present" : false,
+					"timestamp" : 1470957104115
+				}
+			]
+		},
+		{
+			"courseID" : 3,
+			"assignments" : [
+				{
+					"assignmentID" : 1,
+					"name" : "Test 1",
+					"points" : 7,
+					"timestamp" : 1470957104115,
+					"total" : 10
+
+				},
+				{
+					"assignmentID" : 2,
+					"name" : "Test 2",
+					"points" : 9,
+					"timestamp" : 1470957204115,
+					"total" : 5
+
+				},
+				{
+					"assignmentID" : 3,
+					"name" : "Test 3",
+					"points" : 10,
+					"timestamp" : 1470957304115,
+					"total" : 10
+
+				}
+			],
+			"attendance" : [
+				{
+					"points" : 10,
+					"present" : true,
+					"timestamp" : 1470957104115
+				}
+			]
 		}
 	]
 }
